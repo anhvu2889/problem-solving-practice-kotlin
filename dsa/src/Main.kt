@@ -1,13 +1,14 @@
-import blind75.dp.NthTribonacciNumber
-import top150.array.BestTimeBuySellStockII
-import top150.array.JumpGameII
+import topic.twopointer.AppendCharactersStringMakeSubsequence
+import topic.twopointer.SquaresOfSortedArray
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    var nums1 = intArrayOf(2,3,1,1,4)
-    var nums2 = intArrayOf(1, 2, 3, 4, 5)
+    var nums1 = intArrayOf(-4, -1, 0, 3, 10)
+    var nums2 = intArrayOf(-7, -3, 2, 3, 11)
     var nums3 = intArrayOf(7, 6, 4, 3, 1)
-    val result = NthTribonacciNumber().tribonacci(2)
-    println(result)
+    var s = "z"
+    var t = "abcde"
+    val result = SquaresOfSortedArray().sortedSquares(nums2)
+    println(result.contentToString())
 }
