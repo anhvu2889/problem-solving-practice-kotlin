@@ -1,3 +1,4 @@
+import topic.twopointer.NextPermutation
 import topic.twopointer.PartitionLabel
 import topic.twopointer.ReverseString
 import topic.twopointer.StringCompression
@@ -12,6 +13,6 @@ fun main() {
     var chars = charArrayOf('a', 'a', 'b', 'b', 'c', 'c', 'c')
     var s = "ababcbacadefegdehijhklij"
     var t = "abcde"
-    val result = PartitionLabel().partitionLabels(s)
-    println(result)
+    val result = NextPermutation().nextPermutation(nums1)
+    println(nums1.contentToString())
 }
