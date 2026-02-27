@@ -7,17 +7,18 @@ package topic.twopointer
  */
 class NextPermutation {
     fun nextPermutation(nums: IntArray) {
-        var l = nums.size - 2
-        while (l >= 0 && nums[l] >= nums[l + 1]) {
-            l--
+        var i = nums.size - 2
+        while( i >= 0 && nums[i] >= nums[i + 1]) {
+            i--
         }
-        if (l >= 0) {
-            var j = nums.size - 1
-            while (nums[j] <= nums[l]) j--
-            swap(nums, l, j)
+        if (i >= 0) {
+            var r = nums.size - 1
+            while (nums[r] <= nums[i]) {
+                r--
+            }
+            swap(nums, i, r)
         }
-
-        reverse(nums, l + 1, nums.size - 1)
+        reverse(nums, i + 1, nums.size - 1)
     }
 
     fun swap(nums: IntArray, a: Int, b: Int) {
