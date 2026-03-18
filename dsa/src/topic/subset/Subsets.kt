@@ -2,26 +2,22 @@ package topic.subset
 
 /**
  * 78. Subsets
- * Time Complexity:
- * Space Complexity:
+ * Time Complexity: O(n x 2^n)
+ * Space Complexity: O(n x 2^n)
  */
 class Subsets {
-    class Solution {
-        fun subsets(nums: IntArray): List<List<Int>> {
-            val result = mutableListOf<List<Int>>()
-            val n = nums.size
-            val totalSubsets = 1 shl n
+    fun subsets(nums: IntArray): List<List<Int>> {
+        val result = mutableListOf<List<Int>>()
+        dfs(nums, 0, mutableListOf(), result)
+        return result
+    }
 
-            for (mask in 0..<totalSubsets) {
-                val subset = mutableListOf<Int>()
-                for (i in 0..<n) {
-                    if (mask and (1 shl i) != 0) {
-                        subset.add(nums[i])
-                    }
-                }
-                result.add(subset)
-            }
-            return result
+    fun dfs(nums: IntArray, start: Int, path: MutableList<Int>, result: MutableList<List<Int>>) {
+        result.add(ArrayList(path))
+        for (i in start until nums.size) {
+            path.add(nums[i])
+            dfs(nums, i + 1, path, result)
+            path.removeAt(path.size - 1)
         }
     }
 }
