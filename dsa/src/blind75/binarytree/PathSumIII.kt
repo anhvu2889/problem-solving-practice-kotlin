@@ -6,11 +6,6 @@ package blind75.binarytree
  * Space: O(n)
  */
 class PathSumIII {
-    class TreeNode(var `val`: Int) {
-        var left: TreeNode? = null
-        var right: TreeNode? = null
-    }
-
     fun pathSum(root: TreeNode?, targetSum: Int): Int {
         val map = HashMap<Long, Int>()
         map[0L] = 1

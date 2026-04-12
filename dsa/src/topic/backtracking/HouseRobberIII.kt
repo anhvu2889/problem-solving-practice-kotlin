@@ -1,15 +1,14 @@
 package topic.backtracking
 
+import blind75.binarytree.TreeNode
+
+
 /**
  * 337. House Robber III
  * Time: O(n)
  * Space: O(h)
  */
 class HouseRobberIII {
-    class TreeNode(var `val`: Int) {
-        var left: TreeNode? = null
-        var right: TreeNode? = null
-    }
 
     fun rob(root: TreeNode?): Int {
         val result = dfs(root)

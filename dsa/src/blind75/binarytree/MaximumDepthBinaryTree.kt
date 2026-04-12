@@ -6,11 +6,6 @@ package blind75.binarytree
  * Space: O(n)
  */
 class MaximumDepthBinaryTree {
-    class TreeNode(var `val`: Int) {
-        var left: TreeNode? = null
-        var right: TreeNode? = null
-    }
-
     fun maxDepth(root: TreeNode?): Int {
         return dfs(root)
     }

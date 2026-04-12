@@ -6,11 +6,6 @@ package blind75.binarytree
  * Space: O(n1 + h1 + n2 + h2)
  */
 class LeafSimilarTrees {
-    class TreeNode(var `val`: Int) {
-        var left: TreeNode? = null
-        var right: TreeNode? = null
-    }
-
     fun leafSimilar(root1: TreeNode?, root2: TreeNode?): Boolean {
         val list1 = mutableListOf<Int>()
         val list2 = mutableListOf<Int>()
