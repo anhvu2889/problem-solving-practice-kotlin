@@ -6,11 +6,6 @@ package blind75.binarytree
  * Space: O(h)
  */
 class LowestCommonAncestorBinaryTree {
-    class TreeNode(var `val`: Int) {
-        var left: TreeNode? = null
-        var right: TreeNode? = null
-    }
-
     fun lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?): TreeNode? {
         if (root == null || root == p || root == q) return root
 

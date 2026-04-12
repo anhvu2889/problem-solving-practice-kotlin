@@ -6,11 +6,6 @@ package blind75.binarytree
  * Space: O(h)
  */
 class CountGoodNodesBinaryTree {
-    class TreeNode(var `val`: Int) {
-        var left: TreeNode? = null
-        var right: TreeNode? = null
-    }
-
     fun goodNodes(root: TreeNode?): Int {
         if (root == null)
             return -1

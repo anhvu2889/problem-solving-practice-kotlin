@@ -6,11 +6,6 @@ package blind75.binarytree
  * Space: O(h)
  */
 class LongestZigZagPathBinaryTree {
-    class TreeNode(var `val`: Int) {
-        var left: TreeNode? = null
-        var right: TreeNode? = null
-    }
-
     fun longestZigZag(root: TreeNode?): Int {
         return dfs(root)[2]
     }
