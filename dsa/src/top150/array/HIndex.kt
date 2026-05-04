@@ -8,21 +8,20 @@ package top150.array
 class HIndex {
     fun hIndex(citations: IntArray): Int {
         val n = citations.size
-        var buckets: IntArray = IntArray(n + 1)
+        val count = IntArray(n + 1)
         for (citation in citations) {
-            if (citation > n) {
-                buckets[n]++
+            if (citation < n) {
+                count[citation]++
             } else {
-                buckets[citation]++
+                count[n]++
             }
         }
-        var totalPaper = 0
-        for (i in n downTo 0) {
-            totalPaper += buckets[i]
-            if (totalPaper >= i) {
+        var papers = 0
+        for ( i in n downTo 0) {
+            papers += count[i]
+            if (papers >= i)
                 return i
-            }
         }
-        return -1
+        return 0
     }
 }

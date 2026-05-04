@@ -1,24 +1,22 @@
 package top150.array
 
-/*
-169. Majority Element
-Time: O(n)
-Space: O(1)
+/**
+ * 169. Majority Element
+ * Time: O(n)
+ * Space: O(1)
  */
 
 class MajorityElement {
     fun majorityElement(nums: IntArray): Int {
+        var count = 0
         var candidate = nums[0]
-        var count = 1
-        for (i in 1 until nums.size) {
-            if (count == 0) {
-                candidate = nums[i]
-                count = 1
-            } else if (nums[i] == candidate) {
+        for (num in nums) {
+            if (count == 0)
+                candidate = num
+            if (num == candidate)
                 count++
-            } else {
+            else
                 count--
-            }
         }
         return candidate
     }

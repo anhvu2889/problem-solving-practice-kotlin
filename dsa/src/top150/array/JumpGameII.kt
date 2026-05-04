@@ -1,7 +1,5 @@
 package top150.array
 
-import kotlin.math.max
-
 /**
  * 45. Jump Game II
  * Time: O(n)
@@ -9,16 +7,16 @@ import kotlin.math.max
  */
 class JumpGameII {
     fun jump(nums: IntArray): Int {
-        var jump = 0
-        var farthest = 0
-        var boundary = 0
-        for (i in 0 until nums.size - 1) {
-            farthest = max(farthest, i + nums[i])
-            if (i == boundary) {
-                jump++
-                boundary = farthest
+        var jumps = 0
+        var currentJumpEnd = 0
+        var nextJumpMaxReach = 0
+        for (i in 0 until nums.lastIndex) {
+            nextJumpMaxReach = maxOf(nextJumpMaxReach, i + nums[i])
+            if (i == currentJumpEnd) {
+                jumps++
+                currentJumpEnd = nextJumpMaxReach
             }
         }
-        return jump
+        return jumps
     }
 }

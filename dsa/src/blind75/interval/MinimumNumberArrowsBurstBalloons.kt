@@ -2,8 +2,8 @@ package blind75.interval
 
 /**
  * 452. Minimum Number of Arrows to Burst Balloons
- * Time:
- * Space:
+ * Time: O(n)
+ * Space: O(1)
  */
 class MinimumNumberArrowsBurstBalloons {
     fun findMinArrowShots(points: Array<IntArray>): Int {

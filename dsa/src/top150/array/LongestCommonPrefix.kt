@@ -1,7 +1,5 @@
 package top150.array
 
-import kotlin.math.min
-
 /**
  * 14. Longest Common Prefix
  * Time: O(n * m)
@@ -9,19 +7,17 @@ import kotlin.math.min
  */
 class LongestCommonPrefix {
     fun longestCommonPrefix(strs: Array<String>): String {
-        val prefix = strs[0]
-        var length = prefix.length
-        for (str in strs) {
-            length = min(length, str.length)
+        var n = Int.MAX_VALUE
+        for (string in strs) {
+            n = minOf(n, string.length)
         }
-        for (str in strs) {
-            while (str.substring(0, length) != prefix.substring(0, length)) {
-                length--
-                if (length == 0) {
-                    return ""
-                }
+        for (i in 0 until n) {
+            val char = strs[0][i]
+            for (string in strs) {
+                if (string[i] != char)
+                    return string.substring(0, i)
             }
         }
-        return prefix.substring(0, length)
+        return strs[0].substring(0, n)
     }
 }
