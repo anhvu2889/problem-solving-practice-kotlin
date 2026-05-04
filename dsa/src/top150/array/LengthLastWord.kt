@@ -7,15 +7,16 @@ package top150.array
  */
 class LengthLastWord {
     fun lengthOfLastWord(s: String): Int {
-        var i = s.length - 1
-        var result = 0
-        while (i >= 0 && s[i] == ' ') {
+        val n = s.length
+        var i = n - 1
+        while ( i >= 0 && s[i] == ' '){
             i--
         }
+        var length = 0
         while (i >= 0 && s[i] != ' ') {
             i--
-            result++
+            length++
         }
-        return result
+        return length
     }
 }

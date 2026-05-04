@@ -7,21 +7,21 @@ package top150.array
  */
 class RotateArray {
     fun rotate(nums: IntArray, k: Int): Unit {
-        val l = k % nums.size
+        val l =  k % nums.size
         rotate(nums, 0, nums.size - 1)
         rotate(nums, 0, l - 1)
         rotate(nums, l, nums.size - 1)
     }
 
-    fun rotate(nums: IntArray, start: Int, end: Int): Unit {
-        var p1 = start
-        var p2 = end
-        while (p1 < p2) {
-            var temp = nums[p1]
-            nums[p1] = nums[p2]
-            nums[p2] = temp
-            p1++
-            p2--
+    fun rotate(nums: IntArray, start: Int, end: Int) {
+        var l = start
+        var r = end
+        while (l < r) {
+            val temp = nums[l]
+            nums[l] = nums[r]
+            nums[r] = temp
+            l++
+            r--
         }
     }
 }

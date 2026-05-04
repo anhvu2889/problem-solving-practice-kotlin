@@ -7,17 +7,15 @@ package top150.array
  */
 class RomanToInteger {
     fun romanToInt(s: String): Int {
-        var result = 0
-        val n = s.length
-        for (i in 0 until n) {
-            val value = charToInt(s[i])
-            if (i + 1 < n && charToInt(s[i + 1]) > value) {
-                result -= value
-            } else {
-                result += value
-            }
+        var sum = charToInt(s[0])
+        for (i in 1 until s.length) {
+            if (charToInt(s[i - 1]) < charToInt(s[i]))
+                sum += charToInt(s[i]) - 2 * charToInt(s[i - 1])
+            else
+                sum += charToInt(s[i])
         }
-        return result
+        return sum
+
     }
 
     private fun charToInt(char: Char): Int {

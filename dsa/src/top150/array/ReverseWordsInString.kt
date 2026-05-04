@@ -1,38 +1,27 @@
 package top150.array
 
+/**
+ * 151. Reverse Words in a String
+ * Time: O(n)
+ * Space: O(1)
+ */
 class ReverseWordsInString {
     fun reverseWords(s: String): String {
-        val chars = s.toCharArray()
-        reverse(chars, 0, chars.size - 1)
-        var start = 0
-        var end = 0
-        var index = 0
-
-        while (end < chars.size) {
-            while (end < chars.size && chars[end] != ' ') {
-                end++
+        val sb = StringBuilder()
+        var i = s.length - 1
+        while (i >= 0) {
+            if (s[i] == ' ') {
+                i--
+                continue
             }
-            reverse(chars, start, end - 1)
-            if (start < end) {
-                if (index > 0) chars[index++] = ' '
-                for (i in start..<end) chars[index++] = chars[i]
+            val end = i
+            while (i >= 0 && s[i] != ' ') {
+                i--
             }
-            end++
-            start = end
+            if (sb.isNotEmpty())
+                sb.append(" ")
+            sb.append(s.substring(i + 1, end + 1))
         }
-
-        return String(chars, 0, index)
-    }
-
-    private fun reverse(chars: CharArray, start: Int, end: Int) {
-        var l = start
-        var r = end
-        while (l < r) {
-            val temp = chars[l]
-            chars[l] = chars[r]
-            chars[r] = temp
-            l++
-            r--
-        }
+        return sb.toString()
     }
 }

@@ -7,16 +7,12 @@ package top150.array
  */
 class BestTimeBuySellStockII {
     fun maxProfit(prices: IntArray): Int {
-        var buy = prices[0]
-        var totalProfit = 0
+        var profit = 0
         for (i in 1 until prices.size) {
-            if (prices[i] < buy) {
-                buy = prices[i]
-            } else {
-                totalProfit += (prices[i] - buy)
-                buy = prices[i]
+            if (prices[i] > prices[i - 1]) {
+                profit += prices[i] - prices[i - 1]
             }
         }
-        return totalProfit
+        return profit
     }
 }

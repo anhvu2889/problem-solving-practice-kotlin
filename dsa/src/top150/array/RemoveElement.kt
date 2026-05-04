@@ -1,16 +1,22 @@
 package top150.array
 
-//27. Remove Element
+/**
+ * 27. Remove Element
+ * Time: O(n)
+ * Space: O(1)
+ */
 
 class RemoveElement {
     fun removeElement(nums: IntArray, value: Int): Int {
-        var p = 0
-        for (num in nums) {
-            if (num != value) {
-                nums[p] = num
-                p++
+        var w = 0
+        var r = 0
+        while (r < nums.size) {
+            if (nums[r] != value) {
+                nums[w] = nums[r]
+                w++
             }
+            r++
         }
-        return p
+        return w
     }
 }
