@@ -6,9 +6,6 @@ package topic.linkedlist
  * Space: O(1)
  */
 class DeleteNNodeAfterMNodeLinkedList {
-    class ListNode(var `val`: Int) {
-        var next: ListNode? = null
-    }
 
     fun deleteNodes(head: ListNode?, m: Int, n: Int): ListNode? {
         val dummy = ListNode(-1)

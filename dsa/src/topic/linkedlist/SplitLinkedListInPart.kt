@@ -6,10 +6,6 @@ package topic.linkedlist
  * Space: O(1)
  */
 class SplitLinkedListInPart {
-    class ListNode(var `val`: Int) {
-        var next: ListNode? = null
-    }
-
     fun splitListToParts(head: ListNode?, k: Int): Array<ListNode?> {
         var size = 0
         var cur = head

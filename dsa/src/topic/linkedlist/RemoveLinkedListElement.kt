@@ -6,10 +6,6 @@ package topic.linkedlist
  * Space: O(1)
  */
 class RemoveLinkedListElement {
-    class ListNode(var `val`: Int) {
-        var next: ListNode? = null
-    }
-
     fun removeElements(head: ListNode?, k: Int): ListNode? {
         val dummy = ListNode(0)
         dummy.next = head
