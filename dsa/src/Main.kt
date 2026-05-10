@@ -10,4 +10,6 @@ fun main() {
     var t = "abcde"
     val result = SortColor().sortColors(nums1)
     println(nums1.contentToString())
+
+
 }
