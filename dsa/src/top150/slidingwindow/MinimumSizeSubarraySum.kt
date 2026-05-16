@@ -1,4 +1,4 @@
-package topic.slidingwindow
+package top150.slidingwindow
 
 /**
  * 209. Minimum Size Subarray Sum
