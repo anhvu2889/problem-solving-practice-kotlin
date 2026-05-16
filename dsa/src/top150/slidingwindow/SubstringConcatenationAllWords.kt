@@ -1,4 +1,4 @@
-package topic.slidingwindow
+package top150.slidingwindow
 
 /**
  * 30. Substring with Concatenation of All Words

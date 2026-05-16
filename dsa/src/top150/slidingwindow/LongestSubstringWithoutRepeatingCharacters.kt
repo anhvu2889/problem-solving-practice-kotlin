@@ -1,4 +1,4 @@
-package topic.slidingwindow
+package top150.slidingwindow
 
 /**
  * 3. Longest Substring Without Repeating Characters
