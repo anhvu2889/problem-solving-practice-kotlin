@@ -11,9 +11,8 @@ class SearchInRotatedSortedArray {
         var r = nums.size - 1
         while (l <= r) {
             val mid = l + (r - l) / 2
-            if (nums[mid] == target) {
+            if (nums[mid] == target)
                 return mid
-            }
             if (nums[l] <= nums[mid]) {
                 if (nums[l] <= target && target < nums[mid]) {
                     r = mid - 1
