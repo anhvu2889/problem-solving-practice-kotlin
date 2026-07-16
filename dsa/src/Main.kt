@@ -1,4 +1,5 @@
 import topic.array.ConfusingNumber
+import topic.math.GCDOddEvenSums
 import topic.twopointer.PartitionArrayAccordingGivenPivot
 import topic.twopointer.SortColor
 
@@ -10,7 +11,7 @@ fun main() {
     var chars = charArrayOf('a', 'a', 'b', 'b', 'c', 'c', 'c')
     var s = "ababcbacadefegdehijhklij"
     var t = "abcde"
-    val result = PartitionArrayAccordingGivenPivot().pivotArray(nums1, 10)
+    val result = GCDOddEvenSums().gcdOfOddEvenSums(4)
     println(result)
 
 }
