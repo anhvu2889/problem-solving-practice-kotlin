@@ -2,6 +2,8 @@ package top150.binarysearch
 
 /**
  * 153. Find Minimum in Rotated Sorted Array
+ * Time: O(log(n))
+ * Space: O(1)
  */
 class FindMinimumRotatedSortedArray {
     fun findMin(nums: IntArray): Int {
