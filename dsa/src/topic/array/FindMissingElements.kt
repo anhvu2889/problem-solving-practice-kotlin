@@ -2,8 +2,8 @@ package topic.array
 
 /**
  * 3731. Find Missing Elements
- * Time:
- * Space:
+ * Time: O(n + m)
+ * Space: O(m)
  */
 class FindMissingElements {
     fun findMissingElements(nums: IntArray): List<Int> {
