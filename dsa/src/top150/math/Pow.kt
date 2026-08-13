@@ -1,5 +1,7 @@
 package top150.math
 
+import kotlin.math.abs
+
 /**
  * 50. Pow(x, n)
  * Time:
@@ -7,16 +9,16 @@ package top150.math
  */
 class Pow {
     fun myPow(x: Double, n: Int): Double {
-        var exp = Math.abs(n.toLong())
+        var exp = abs(n.toLong())
         var base = x
-        var result = 1.0
+        var ans = 1.0
         while (exp > 0) {
-            if (exp and 1L == 1L) {
-                result *= base
+            if (exp % 2 != 0L) {
+                ans = ans * base
             }
             base *= base
-            exp = exp shr 1
+            exp /= 2
         }
-        return if (n < 0) 1.0 / result else result
+        return if (n < 0) 1.0 / ans else ans
     }
 }
