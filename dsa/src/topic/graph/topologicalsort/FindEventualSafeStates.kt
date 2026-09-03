@@ -1,4 +1,4 @@
-package topic.topologicalsort
+package topic.graph.topologicalsort
 
 /**
  * 802. Find Eventual Safe States

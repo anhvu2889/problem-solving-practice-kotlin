@@ -1,4 +1,4 @@
-package topic.topologicalsort
+package topic.graph.topologicalsort
 
 /**
  * 269. Alien Dictionary
