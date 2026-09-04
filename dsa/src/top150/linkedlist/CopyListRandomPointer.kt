@@ -12,33 +12,43 @@ class CopyListRandomPointer {
     }
 
     fun copyRandomList(node: Node?): Node? {
-        var dummy = Node(0)
-        dummy.next = node
-        var cur = dummy.next
+        if (node == null) {
+            return null
+        }
+        weaveNext(node)
+        weaveRandom(node)
+        return unweave(node)
+    }
+
+    private fun weaveNext(node: Node?) {
+        var cur = node
+        // Weave next: A -> A' -> B -> B' -> C -> C'
         while (cur != null) {
             val clone = Node(cur.`val`)
             clone.next = cur.next
             cur.next = clone
             cur = clone.next
         }
-        cur = dummy.next
+    }
+
+    private fun weaveRandom(node: Node?) {
+        var cur = node
+        while (cur != null) {
+            val clone = cur.next!!
+            clone.random = cur.random?.next
+            cur = clone.next
+        }
+    }
+
+    private fun unweave(node: Node): Node {
+        var cloneHead = node.next!!
+        var cur: Node? = node
         while (cur != null) {
             val clone = cur.next
-            val next = clone?.next
-            clone?.random = cur.random?.next
-            cur = next
+            cur.next = clone?.next
+            clone?.next = clone.next?.next
+            cur = cur.next
         }
-        cur = dummy.next
-        val ans = cur?.next
-        while (cur != null) {
-            val clone = cur.next
-            val next = clone?.next
-
-            cur.next = next
-            clone?.next = next?.next
-
-            cur = next
-        }
-        return ans
+        return cloneHead
     }
 }
