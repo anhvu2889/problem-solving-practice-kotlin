@@ -11,7 +11,7 @@ package top150.linkedlist
  * Time: O(1)
  * Space: O(n)
  */
-class LRUCache(capacity: Int) {
+class LRUCache(val capacity: Int) {
 
     private class Node(val key: Int, var value: Int) {
         var prev: Node? = null
@@ -21,51 +21,68 @@ class LRUCache(capacity: Int) {
     private val map = HashMap<Int, Node>()
     private val head = Node(0, 0)
     private val tail = Node(0, 0)
-    private val cap = capacity
 
     init {
         head.next = tail
         tail.prev = head
     }
 
-    private fun removeNode(node: Node) {
-        node.prev!!.next = node.next
-        node.next!!.prev = node.prev
-    }
-
-    private fun insertAfterHead(node: Node) {
-        head.next!!.prev = node
-        node.next = head.next
-        node.prev = head
-        head.next = node
-
-    }
-
     fun get(key: Int): Int {
-        if (!map.containsKey(key)) {
+        val node = map[key]
+        if (node == null) {
             return -1
         }
-        val node = map[key]
-        removeNode(node!!)
-        insertAfterHead(node)
+        moveToFront(node)
         return node.value
+
     }
 
     fun put(key: Int, value: Int) {
-        if (map.containsKey(key)) {
-            val node = map[key]!!
-            node.value = value
-            removeNode(node)
-            insertAfterHead(node)
-        } else {
-            if (map.size == cap) {
-                val least = tail.prev!!
-                removeNode(least)
-                map.remove(least.key)
-            }
-            val node = Node(key, value)
-            map[key] = node
-            insertAfterHead(node)
+        val node = map[key]
+        if (node != null) {
+            putExistingNode(node, value)
+            return
         }
+        if (map.size == capacity) {
+            evict()
+        }
+        putNewNode(key, value)
+    }
+
+    private fun putExistingNode(node: Node, newValue: Int) {
+        node.value = newValue
+        moveToFront(node)
+    }
+
+    private fun putNewNode(key: Int, value: Int) {
+        val node = Node(key, value)
+        addFront(node)
+        map[key] = node
+    }
+
+    private fun evict() {
+        val lru = tail.prev!!
+        unlink(lru)
+        map.remove(lru.key)
+    }
+
+    private fun unlink(node: Node) {
+        val prev = node.prev!!
+        val next = node.next!!
+        prev.next = next
+        next.prev = prev
+    }
+
+    private fun addFront(node: Node) {
+        val first = head.next!!
+        head.next = node
+        node.prev = head
+        node.next = first
+        first.prev = node
+    }
+
+    private fun moveToFront(node: Node) {
+        unlink(node)
+        addFront(node)
     }
 }
