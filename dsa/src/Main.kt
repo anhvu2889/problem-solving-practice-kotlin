@@ -1,4 +1,5 @@
 import topic.array.ConfusingNumber
+import topic.math.CountCommasRangeII
 import topic.math.GCDOddEvenSums
 import topic.twopointer.PartitionArrayAccordingGivenPivot
 import topic.twopointer.SortColor
@@ -11,7 +12,8 @@ fun main() {
     var chars = charArrayOf('a', 'a', 'b', 'b', 'c', 'c', 'c')
     var s = "ababcbacadefegdehijhklij"
     var t = "abcde"
-    val result = GCDOddEvenSums().gcdOfOddEvenSums(4)
+    val num = 1004590L
+    val result = CountCommasRangeII().countCommas(num)
     println(result)
 
 }
