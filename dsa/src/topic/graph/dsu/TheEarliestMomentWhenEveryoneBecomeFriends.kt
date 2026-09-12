@@ -1,4 +1,4 @@
-package topic.dsu
+package topic.graph.dsu
 
 /**
  * 1101. The Earliest Moment When Everyone Become Friends

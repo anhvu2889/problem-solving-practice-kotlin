@@ -1,4 +1,4 @@
-package topic.dsu
+package topic.graph.dsu
 
 class MakeLexicographicallySmallestArraySwappingElements {
     fun lexicographicallySmallestArray(nums: IntArray, limit: Int): IntArray {

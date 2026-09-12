@@ -1,4 +1,7 @@
 import topic.array.ConfusingNumber
+import topic.dp.LongestAbsoluteFilePath
+import topic.hashmap.HighFive
+import topic.math.CountCommasRangeII
 import topic.math.GCDOddEvenSums
 import topic.twopointer.PartitionArrayAccordingGivenPivot
 import topic.twopointer.SortColor
@@ -11,7 +14,8 @@ fun main() {
     var chars = charArrayOf('a', 'a', 'b', 'b', 'c', 'c', 'c')
     var s = "ababcbacadefegdehijhklij"
     var t = "abcde"
-    val result = GCDOddEvenSums().gcdOfOddEvenSums(4)
+    val input = "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"
+    val result = LongestAbsoluteFilePath().lengthLongestPath(input)
     println(result)
 
 }
