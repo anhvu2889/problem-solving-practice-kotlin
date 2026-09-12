@@ -1,24 +1,26 @@
-package topic.dsu
+package topic.graph.dsu
 
 /**
- * 323. Number of Connected Components in an Undirected Graph
- * Time: O(V + E)
- * Space: O(V)
+ * 684. Redundant Connection
+ * Time: O(n * alpha(n))
+ * SpacE: O(n)
  */
-class NumberConnectedComponentsUndirectedGraph {
-    fun countComponents(n: Int, edges: Array<IntArray>): Int {
-        val parent = IntArray(n) { it }
-        val size = IntArray(n) { 1 }
-        var count = n
-        for ((a, b) in edges) {
-            if (union(a, b, parent, size)) {
-                count--
+class RedundantConnection {
+    fun findRedundantConnection(edges: Array<IntArray>): IntArray {
+        val n = edges.size
+        val parent = IntArray(n + 1) { it }
+        val size = IntArray(n + 1) { 1 }
+        for (edge in edges) {
+            val a = edge[0]
+            val b = edge[1]
+            if (!union(a, b, parent, size)) {
+                return edge
             }
         }
-        return count
+        return intArrayOf(0, 0)
     }
 
-    private fun find (x: Int, parent: IntArray): Int {
+    private fun find(x: Int, parent: IntArray): Int {
         var root = x
         while (parent[root] != root) {
             root = parent[root]
@@ -27,7 +29,7 @@ class NumberConnectedComponentsUndirectedGraph {
         while (parent[cur] != root) {
             val temp = parent[cur]
             parent[cur] = root
-            cur = parent[cur]
+            cur = temp
         }
         return root
     }
@@ -38,7 +40,7 @@ class NumberConnectedComponentsUndirectedGraph {
         if (ra == rb) {
             return false
         }
-        if (size[ra] < size[rb]) {
+        if (size[rb] > size[ra]) {
             val temp = ra
             ra = rb
             rb = temp
