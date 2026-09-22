@@ -20,4 +20,17 @@ fun main() {
     for (day in 30 downTo 0) {
         println("Count down in: $day days")
     }
+
+    fun largestNumber(nums: IntArray): String {
+        val strs = mutableListOf<String>()
+        for (num in nums) {
+            strs.add(num.toString())
+        }
+        strs.sortWith(Comparator() {a, b -> b.compareTo(a)})
+        val sb = StringBuilder()
+        for (s in strs) {
+            sb.append(s)
+        }
+        return sb.toString()
+    }
 }
