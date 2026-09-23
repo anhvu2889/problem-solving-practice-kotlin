@@ -10,26 +10,30 @@ class InsertIntoSortedCircularLinkedList {
         var next: Node? = null
     }
 
-    fun insert(head: Node?, insertVal: Int): Node {
+    fun insert(head: Node?, insertVal: Int): Node? {
+        val newNode = Node(insertVal)
         if (head == null) {
-            val node = Node(insertVal)
-            node.next = node
-            return node
+            newNode.next = newNode
+            return newNode
         }
+        val prev = findGap(head, insertVal)
+        newNode.next = prev.next
+        prev.next = newNode
+        return head
+    }
+
+    private fun findGap(head: Node, newValue: Int): Node {
         var cur = head
         do {
-            val next = cur?.next
-            if (next != null && cur != null && insertVal >= cur.`val` && insertVal <= next.`val`) {
+            val next = cur.next!!
+            if (cur.`val` <= newValue && next.`val` >= newValue) {
                 break
             }
-            if (next != null && cur != null && cur.`val` > next.`val` && (insertVal >= cur.`val` || insertVal <= next.`val`)) {
+            if (cur.`val` > next.`val` && (newValue >= cur.`val` && newValue <= next.`val`)) {
                 break
             }
             cur = next
         } while (cur !== head)
-        val node = Node(insertVal)
-        node.next = cur?.next
-        cur?.next = node
-        return head
+        return cur
     }
 }
