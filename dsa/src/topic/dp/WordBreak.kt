@@ -2,26 +2,52 @@ package topic.dp
 
 /**
  * 139. Word Break
+ * Time: O(n ^ 2 + m * L)
+ * Space: O(m * L)
  */
 class WordBreak {
-    fun wordBreak(s: String, wordDict: List<String>): Boolean {
-        val wordSet = wordDict.toHashSet()
-        val memo = HashMap<Int, Boolean>()
-        return dfs(s, 0, wordSet, memo)
+
+    private class TrieNode {
+        val children = arrayOfNulls<TrieNode>(26)
+        var endWord = false
     }
 
-    fun dfs(s: String, start: Int, wordSet: HashSet<String>, memo: HashMap<Int, Boolean>): Boolean {
-        if (start == s.length)
-            return true
-        if (memo.containsKey(start))
-            return memo[start]!!
-        for (end in start + 1..s.length) {
-            if (wordSet.contains(s.substring(start, end)) && dfs(s, end, wordSet, memo)) {
-                memo[start] = true
-                return true
+    private fun insert(root: TrieNode, word: String) {
+        var node = root
+        for (c in word) {
+            val i = c - 'a'
+            if (node.children[i] == null) {
+                node.children[i] = TrieNode()
+            }
+            node = node.children[i]!!
+        }
+        node.endWord = true
+    }
+
+    private fun buildTrie(words: List<String>): TrieNode {
+        val root = TrieNode()
+        for (word in words) {
+            insert(root, word)
+        }
+        return root
+    }
+
+    fun wordBreak(s: String, wordDict: List<String>): Boolean {
+        val root = buildTrie(wordDict)
+        val n = s.length
+        val canBreakFrom = BooleanArray(n + 1)
+        canBreakFrom[n] = true
+        for (start in n - 1 downTo 0) {
+            var node = root
+            for (end in start until n) {
+                val i = s[end] - 'a'
+                node = node.children[i] ?: break
+                if (node.endWord && canBreakFrom[end + 1]) {
+                    canBreakFrom[start] = true
+                    break
+                }
             }
         }
-        memo[start] = false
-        return false
+        return canBreakFrom[0]
     }
 }

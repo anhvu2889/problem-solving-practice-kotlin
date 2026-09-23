@@ -20,12 +20,15 @@ class DotProductTwoSparseVectors {
 
         // Return the dotProduct of two sparse vectors
         fun dotProduct(vec: SparseVector): Int {
+            if (vec.nonZeroMap.size < nonZeroMap.size) {
+                return vec.dotProduct(this)
+            }
             var sum = 0
-            for (i in nonZeroMap.keys) {
-                if (vec.nonZeroMap[i] == null) {
-                    continue
+            for ((i, value) in nonZeroMap) {
+                val vecValue = vec.nonZeroMap[i]
+                if (vecValue != null) {
+                    sum += value * vecValue
                 }
-                sum += nonZeroMap[i]!! * vec.nonZeroMap[i]!!
             }
             return sum
         }
